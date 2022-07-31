@@ -18,6 +18,7 @@ function Counter() {
     
     return (
     <div>
+        <h1>This component about counter</h1>
         <h1>{countValue}</h1>
         <button onClick={()=>dispatch(increase())}>Increase</button>
         <button onClick={()=> dispatch(decrease())}>Decrease</button>
