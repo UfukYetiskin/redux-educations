@@ -1,6 +1,9 @@
 import React from "react";
 import "./ListStyle.css";
 import { useSelector, useDispatch } from "react-redux";
+import { addNewTodo } from "../redux/todo/listSlice";
+import { nanoid } from "@reduxjs/toolkit";
+import {useState} from 'react'
 
 const Header = () => {
   return (
@@ -12,12 +15,23 @@ const Header = () => {
 };
 
 const Form = () => {
+    const [title, setTitle] = useState('')
+    const items = useSelector(state => state.todos.items)
+    const dispatch = useDispatch()
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(addNewTodo({id : nanoid(), title , completed  : false}))
+        setTitle('')
+    }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input
         placeholder="What need to be done?"
         autoFocus
         className="new-todo"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
       />
     </form>
   );
@@ -25,7 +39,7 @@ const Form = () => {
 
 const Content = () => {
   const items = useSelector((state) => state.todos.items);
-  console.log(items);
+  
   return (
     <>
       <section className="main">
