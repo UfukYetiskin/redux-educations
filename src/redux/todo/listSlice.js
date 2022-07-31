@@ -26,6 +26,7 @@ export const listSlice = createSlice({
                 completed : true
             },
         ],
+        activeFilter : 'all',
     },
     reducers : {
        addNewTodo : (state, action) => {
@@ -36,9 +37,21 @@ export const listSlice = createSlice({
             const item = state.items.find(item => item.id === id)
 
             item.completed = !item.completed
+       },
+       destroy : (state, action) => {
+        const id =action.payload;
+        const filtered = state.items.filter((item) => item.id !== id)
+        state.items = filtered
+       },
+       change : (state, action) => {
+        state.activeFilter = action.payload
+       },
+       clearCompleted : (state) => {
+        const filtered = state.items.filter(item => item.completed ===false)
+        state.items = filtered
        }
     },
 });
 
-export const { addNewTodo ,toggle} = listSlice.actions;
+export const { addNewTodo ,toggle, destroy, change, clearCompleted} = listSlice.actions;
 export default listSlice.reducer;
