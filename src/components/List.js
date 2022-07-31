@@ -1,7 +1,7 @@
 import React from "react";
 import "./ListStyle.css";
 import { useSelector, useDispatch } from "react-redux";
-import { addNewTodo } from "../redux/todo/listSlice";
+import { addNewTodo, toggle } from "../redux/todo/listSlice";
 import { nanoid } from "@reduxjs/toolkit";
 import {useState} from 'react'
 
@@ -16,7 +16,7 @@ const Header = () => {
 
 const Form = () => {
     const [title, setTitle] = useState('')
-    const items = useSelector(state => state.todos.items)
+    // const items = useSelector(state => state.todos.items)
     const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
@@ -38,8 +38,12 @@ const Form = () => {
 };
 
 const Content = () => {
+  const dispatch   = useDispatch()
+  
+
   const items = useSelector((state) => state.todos.items);
   
+
   return (
     <>
       <section className="main">
@@ -57,7 +61,12 @@ const Content = () => {
           {items.map((item) => (
             <li key={item.id} className={item.completed ? 'completed' : '' }>
               <div className="view">
-                <input className="toggle" type="checkbox" />
+                <input 
+                    className="toggle" 
+                    type="checkbox" 
+                    onChange={() => dispatch(toggle({id : item.id}))} 
+                    checked ={item.completed}
+                />
                 <label>{item.title}</label>
                 <button className="destroy"></button>
               </div>
