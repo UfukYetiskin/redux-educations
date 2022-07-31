@@ -2,21 +2,35 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const listSlice = createSlice({
     
-    name : 'todo',
+    name : 'todos',
     initialState : {
-        todoList : ['Ufuk', 'Ümmühan']
+        items : [
+            {
+                item : '1',
+                title :'Ömer',
+                completed : true
+            },
+            {
+                item : '2',
+                title :'Uğur',
+                completed : false
+            },
+            {
+                item : '3',
+                title :'Hasan',
+                completed : false
+            },
+            {
+                item : '4',
+                title :'Ferit',
+                completed : true
+            },
+        ],
     },
     reducers : {
-        addDuty : (state, action) => {
-            const newTask = {
-                id : new Date(),
-                content: action.payload.newContent
-            }
-            state.todoList.push(newTask)
-        } 
+       
     }
 })
 
 
 export default listSlice.reducer;
-export const {addDuty} = listSlice.actions;
