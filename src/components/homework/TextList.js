@@ -1,14 +1,65 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { addNote } from "../../redux/homework/textAreaSlice";
 
+let filtered = [];
 function TextList() {
   const [text, setText] = useState("");
   const [color, setColor] = useState("");
+  const [filterValue, setFilter] = useState("");
+
+  let notes = useSelector((state) => state.texts.items);
+  const [data, setData] = useState(notes);
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addNote({ id: nanoid(), text, color }));
+    setText("");
+  };
+
+  useEffect(() => {
+    
+  } ,[data])
+
+  const handleChange = (e) => {
+    setText(e.target.value);
+  };
+
+
+
+
+  const handleFilter = () => {
+
+    if (filterValue !== "") {
+      console.log(filtered);
+      filtered = notes
+        .filter((item) => item.text === filterValue)
+        .map((item) => item);
+        setData(filtered)
+      console.log("input boş degil");
+      console.log(filtered);
+    }
+    setFilter('')
+  };
+  const handleListData = () => {
+    setData(notes)
+  }
 
   return (
     <div style={{ backgroundColor: "white" }}>
+      <div>
+        <input
+          placeholder="Search"
+          type="text"
+          value={filterValue}
+          onChange={(e) => setFilter(e.target.value)}
+          style={{padding : '2%', fontSize: "24px", borderRadius : '10px'}}
+        />
+        <button onClick={handleFilter} style={{padding : '2%', backgroundColor : 'skyblue', margin : '1%', borderRadius : '10px'}}>Search</button>
+        <button onClick={handleListData} style={{padding : '2%', backgroundColor : 'skyblue', margin : '1%', borderRadius : '10px'}}>List All Notes</button>
+      </div>
       <h1>Notes App</h1>
       <form
         style={{ textAlign: "center", backgroundColor: "white", margin: "0" }}
@@ -16,18 +67,21 @@ function TextList() {
         <textarea
           placeholder="Write here your notes"
           value={text}
-          cols="50"
+          cols="30"
           rows="4"
-          onChange={(e) => setText(e.target.value)}
-          style={{ fontSize: "24px", border: "1px solid white", padding: "4%" }}
+          onChange={handleChange}
+          style={{
+            fontSize: "24px",
+            border: "1px solid white",
+            padding: "4%",
+            backgroundColor: `${color}`,
+          }}
         ></textarea>
       </form>
       <div
         style={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "center",
-          width: "689px",
           backgroundColor: "white",
           margin: "0",
         }}
@@ -103,9 +157,31 @@ function TextList() {
             color: "white",
             padding: "1%",
           }}
+          onClick={handleSubmit}
         >
           Add
         </button>
+      </div>
+
+      <div>
+        <ul>
+          {data &&
+            data.map((note) => (
+              <li
+                style={{
+                  backgroundColor: `${note.color}`,
+                  listStyleType: "none",
+                  fontSize: "24px",
+                  padding: "2%",
+                  color: "white",
+                  margin: "2%",
+                }}
+                key={note.id}
+              >
+                {note.text}
+              </li>
+            ))}
+        </ul>
       </div>
     </div>
   );
