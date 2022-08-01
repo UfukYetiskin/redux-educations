@@ -20,8 +20,8 @@ function Counter() {
     <div>
         <h1>This component about counter</h1>
         <h1>{countValue}</h1>
-        <button onClick={()=>dispatch(increase())}>Increase</button>
-        <button onClick={()=> dispatch(decrease())}>Decrease</button>
+        <button style={{backgroundColor : 'skyblue', padding :'1%'}} onClick={()=>dispatch(increase())}>Increase</button>
+        <button style={{backgroundColor : 'skyblue', padding :'1%', marginLeft : '10px'}} onClick={()=> dispatch(decrease())}>Decrease</button>
         <br/>
         <br/>
         <input 
