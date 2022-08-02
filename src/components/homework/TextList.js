@@ -17,6 +17,7 @@ function TextList() {
     e.preventDefault();
     dispatch(addNote({ id: nanoid(), text, color }));
     setText("");
+    console.log(text, color)
   };
 
   useEffect(() => {
