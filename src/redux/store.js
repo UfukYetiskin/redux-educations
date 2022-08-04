@@ -4,6 +4,7 @@ import textAreaSlice  from './homework/textAreaSlice';
 import listSlice from './todo/listSlice';
 import charactersSlice from './breakingbadchars/characterSlice';
 import quotesSlice from './breakingbadchars/quotesSlice';
+import  remainderSlice  from './moneyofbillgates/remainder';
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     texts : textAreaSlice,
     characters : charactersSlice,
     quotes : quotesSlice,
+    remainder : remainderSlice,
   },
 });
