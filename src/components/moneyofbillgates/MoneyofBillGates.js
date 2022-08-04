@@ -5,12 +5,13 @@ function MoneyofBillGates() {
 
     const products = useSelector(state => state.remainder.products)
     const totalMoney = useSelector(state => state.remainder.totalMoney);
-
+    const receipt = useSelector(state => state.remainder.receipt)
     const dispatch = useDispatch();
 
     console.log(products)
     console.log(products[0].hamburger)
     console.log(totalMoney)
+    console.log(receipt)
 
   return (
     <div>
@@ -56,6 +57,27 @@ function MoneyofBillGates() {
                     <button onClick={()=>dispatch(incrementPieceofShip())} style={{margin : '2% 2%', backgroundColor : 'green', padding :'2%', fontWeight :'bold', color :'white', borderRadius : '10px'}}>Buy</button>
                 </div>
             </div>
+        </div>
+        <div style={{textAlign  : 'center'}}>
+            <h1>Your Receipt</h1>
+            <div>
+                <div>
+                    <span style={{margin : '1% 5%'}}>Hamburger</span>
+                    <span style={{margin : '1% 5%'}}>X{products[0].piece}</span>
+                    <span style={{margin : '1% 5%', color : 'green'}}>${products[0].price}</span>
+                </div>
+                <div>
+                    <span style={{margin : '1% 5%'}}>Home</span>
+                    <span style={{margin : '1% 5%'}}>X{products[1].piece}</span>
+                    <span style={{margin : '1% 5%', color : 'green'}}>${products[1].price}</span>
+                </div>
+                <div>
+                    <span style={{margin : '1% 5%'}}>Ship</span>
+                    <span style={{margin : '1% 5%'}}>X{products[2].piece}</span>
+                    <span style={{margin : '1% 5%', color : 'green'}}>${products[2].price}</span>
+                </div>
+            </div>
+            <div style={{color :'green'}}><strong>Total</strong>: { -1 * receipt}</div>
         </div>
     </div>
   )
