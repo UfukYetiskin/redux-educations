@@ -1,4 +1,5 @@
 import MainAppComponent from './components/breakingbad/app';
+import Contacts from './components/contactapp/Contacts';
 import Counter from './components/Counter'
 import TextList from './components/homework/TextList';
 import List from './components/List'
@@ -36,6 +37,16 @@ function App() {
       <hr/>
       <h1 style={{marginTop : '10%'}}></h1>
       <MoneyofBillGates/>
+      <br/>
+      <hr/>
+      <hr/>
+      <br/>
+      <hr/>
+      <hr/>
+      <br/>
+      <hr/>
+      <h1 style={{marginTop : '10%'}}></h1>
+      <Contacts />
     </div>
   );
 }
