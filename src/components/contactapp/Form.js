@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {addContact, addContacts} from '../../redux/contactapp/contactSlice'
 import {nanoid} from '@reduxjs/toolkit'
 
@@ -9,14 +9,14 @@ import {nanoid} from '@reduxjs/toolkit'
 function Form() {
     const [name, setName] = useState("")
 
-    const dispatch = (useDispatch)
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(!name){
             return false;
         }
-
+        console.log("yazdir")
         dispatch(addContact({id: nanoid() , name}))
         setName("")
     }
