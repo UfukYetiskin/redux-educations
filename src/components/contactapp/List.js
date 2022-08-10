@@ -10,9 +10,11 @@ function List() {
   const total = useSelector(contactSelectors.selectTotal);
   return (
     <div>
+        <h1 style={{textAlign :'center'}}>Contact App ({total})</h1>
       {contacts && contacts.map((item) => (
         <Item key={item.id} item={item}/>
       ))}
+      
     </div>
   )
 }

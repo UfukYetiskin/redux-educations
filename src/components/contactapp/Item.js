@@ -1,12 +1,50 @@
-import React from 'react'
+import React from "react";
+import {useDispatch} from "react-redux";
+import {deleteContact} from '../../redux/contactapp/contactSlice'
 
-function Item({item}) {
+
+function Item({ item }) {
+
+    const dispatch = useDispatch();
+    const handleDelete = (id) => {
+        if(window.confirm("are u sure?")){
+            dispatch(deleteContact(id))
+        }
+    }
   return (
-    <div style={{  borderRadius :'10px',backgroundColor : '#FFC000', padding :'3%', marginTop :'2%', justifyContent:'space-between',}}>
-      <span style={{display :'inline-block'}}>{item.name}</span> 
-      <span style={{display :'inline-block', margin :'0 20%'}}>{item.phone_number}</span>
+    <div
+      style={{
+        borderRadius: "10px",
+        backgroundColor: "#FFC000",
+        padding: "3%",
+        marginTop: "2%",
+        display: "flex",
+        justifyContent: "space-between",
+      }}
+    >
+      <div>
+        <span style={{ display: "inline-block" }}>{item.name}</span>
+      </div>
+      <div>
+        <span style={{ display: "inline-block",  }}>
+          {item.phone_number}
+        </span>
+      </div>
+      <div>
+        <span
+          style={{
+            width: "18px",
+            heigh: "22px",
+            color: "red",
+            textAlign: "center",
+          }}
+          onClick={() => handleDelete(item.id)}
+        >
+          X
+        </span>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Item
+export default Item;

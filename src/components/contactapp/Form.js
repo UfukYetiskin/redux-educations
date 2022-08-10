@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {addContact, addContacts} from '../../redux/contactapp/contactSlice'
+import {addContact, addContacts, clearContact} from '../../redux/contactapp/contactSlice'
 import {nanoid} from '@reduxjs/toolkit'
 
 
@@ -22,6 +22,12 @@ function Form() {
         setName("")
         setPhoneNum("");
     }
+    const handleClear = (e) => {
+        e.preventDefault();
+        if(window.confirm("Are u sure about clear contacts")){
+            dispatch(clearContact())
+        }
+    }
   return (
     <div>
       <form>
@@ -37,7 +43,8 @@ function Form() {
             onChange={(e) => setPhoneNum(e.target.value)}
             style={{margin : '1%', padding :' 2%', width :'90%'}}
         />
-        <button onClick={handleSubmit} type='submit' style={{border :'1px solid #FFC000', padding :' 2%', backgroundColor : '#FFC000', margin :'1% 45%', borderRadius :'10px'}}>Add</button>
+        <button onClick={handleSubmit} type='submit' style={{border :'1px solid #FFC000', padding :' 2%', backgroundColor : '#FFC000', marginLeft :' 35%', borderRadius :'10px'}}>Add</button>
+        <button onClick={handleClear} style={{border :'1px solid #FFC000', padding :' 2%', backgroundColor : '#FFC000', margin :'1%', borderRadius :'10px'}}>Delete All</button>
       </form>
     </div>
   )
