@@ -14,13 +14,13 @@ function Inputs() {
 
     }, [dispatch])
   return (
-    <div>
+    <div style={{margin :'2%'}}>
       <input 
         type="number"
         value={number}
         onChange={(e) => setNumber(e.target.value)}
       />
-      <button onClick={() => dispatch(getText(parseInt(number)))}>List</button>
+      <button style={{border : '1px solid white', padding :'5px', margin : '1%'}} onClick={() => dispatch(getText(parseInt(number)))}>List</button>
     </div>
   )
 }
