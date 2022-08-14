@@ -7,6 +7,7 @@ import quotesSlice from './breakingbadchars/quotesSlice';
 import  remainderSlice  from './moneyofbillgates/remainder';
 import contactSlice from './contactapp/contactSlice';
 import textgeneratorSlice from './textGenerator/textgeneratorSlice'
+import markdownSlice from './markdownpreviewer/markdownSlice';
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     remainder : remainderSlice,
     contacts : contactSlice,
     textGenerator : textgeneratorSlice,
+    markdownPreviewer : markdownSlice,
   },
 });
