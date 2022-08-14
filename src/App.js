@@ -3,6 +3,7 @@ import Contacts from './components/contactapp/Contacts';
 import Counter from './components/Counter'
 import TextList from './components/homework/TextList';
 import List from './components/List'
+import MarkdownPreviewer from './components/markdownpreviewer';
 import MoneyofBillGates from './components/moneyofbillgates/MoneyofBillGates';
 import TextGenerator from './components/textGenerator/index'
 function App() {
@@ -58,6 +59,16 @@ function App() {
       <hr/>
       <h1 style={{marginTop : '10%'}}></h1>
       <TextGenerator />
+      <br/>
+      <hr/>
+      <hr/>
+      <br/>
+      <hr/>
+      <hr/>
+      <br/>
+      <hr/>
+      <h1 style={{marginTop : '10%'}}></h1>
+      <MarkdownPreviewer/>
     </div>
   );
 }
