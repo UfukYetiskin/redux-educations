@@ -1,9 +1,26 @@
 import React from 'react'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {toMarkdown} from '../../redux/markdownpreviewer/markdownSlice'
+
 
 function Texts() {
     const [text, setText] = useState("")
-  return (
+
+    const dispatch = useDispatch();
+
+    const parag = useSelector(state => state.markdownPreviewer.text)
+    const element = useSelector(state => state.markdownPreviewer.element)
+    useEffect(() =>{
+
+    }, [dispatch])
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        dispatch(toMarkdown(text))
+        
+    }
+    return (
     <div>
       <form>
         <input
@@ -13,8 +30,9 @@ function Texts() {
             placeholder="Write here your text"
             style={{padding :'5px'}}
         />
-        <button type='submit' style={{backgroundColor : 'skyblue', padding :'5px', margin :'1%'}}>to Markdown</button>
+        <button onClick={handleClick}  style={{backgroundColor : 'skyblue', padding :'5px', margin :'1%'}}>to Markdown</button>
       </form>
+      {parag && `<${element}> ${parag} </${element}>`}
     </div>
   )
 }
