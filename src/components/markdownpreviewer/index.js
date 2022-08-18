@@ -5,7 +5,7 @@ import Texts from "./Texts";
 const MarkdownPreviewer = () => {
     return(
         <div style={{textAlign  :'center'}}>
-            MarkdownPreviewer
+            <h1>Markdown Preview</h1>
             <Texts/>
         </div>
     )
