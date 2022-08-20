@@ -11,8 +11,12 @@ const markdownSlice = createSlice({
         toMarkdown : (state,action) =>{
             const value = action.payload;
             if(value[0] === "*"  && value[1]  === "*" && value[value.length-1] === "*" && value[value.length-2] === "*"){
+                const toArr = value.split("");
+                toArr.splice(0,2)
+                toArr.splice(toArr.length-2, 2)
+                const toStr = toArr.join("");
                 state.element = "strong"
-                state.text = `<${state.element}>  ${value} </${state.element}>`;
+                state.text = `${toStr}`;
 
             }else if(value[0] === "#" && value[1] !== "#"){ 
                 state.element = "h1"

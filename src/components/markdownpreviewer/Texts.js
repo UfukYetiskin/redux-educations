@@ -19,7 +19,11 @@ function Texts() {
     const handleClick = (e) => {
         e.preventDefault();
         dispatch(toMarkdown(metin))
-        console.log(metin[0])
+        // const toarr = metin.split("");
+        // console.log(toarr)
+        // const removed = toarr.splice(0,2).splice(toarr.length-2, 2)
+        // console.log(removed)
+        // console.log(metin[0])
         console.log(parag)
         setText("")
     }
@@ -43,7 +47,7 @@ function Texts() {
         </div>
         <div style={{margin : '1%' ,textAlign :'center'}}>
             <h2>to Markdown</h2>
-            {React.createElement(`${element}`, {style : {backgroundColor : 'yellow'}}, `${parag}`)}
+            {parag  && element && React.createElement(`${element}`, {}, `${parag}`)}
         </div>
       </div>
       
