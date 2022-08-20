@@ -5,6 +5,7 @@ import {toMarkdown} from '../../redux/markdownpreviewer/markdownSlice'
 
 
 function Texts() {
+    
     const [metin, setText] = useState("")
 
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function Texts() {
         dispatch(toMarkdown(metin))
         console.log(metin[0])
         console.log(parag)
+        setText("")
     }
     return (
     <div>
@@ -41,7 +43,7 @@ function Texts() {
         </div>
         <div style={{margin : '1%' ,textAlign :'center'}}>
             <h2>to Markdown</h2>
-            {parag}
+            {React.createElement(`${element}`, {style : {backgroundColor : 'yellow'}}, `${parag}`)}
         </div>
       </div>
       
