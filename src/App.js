@@ -9,7 +9,7 @@ import MoneyofBillGates from './components/moneyofbillgates/MoneyofBillGates';
 import TextGenerator from './components/textGenerator/index'
 function App() {
   return (
-    <div className="App" style={{width : '100%'}}>
+    <div className="App" style={{width : '100%', backgroundColor:"white"}}>
       <Counter/>
       <List></List>
       <TextList></TextList>
