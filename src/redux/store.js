@@ -8,7 +8,7 @@ import  remainderSlice  from './moneyofbillgates/remainder';
 import contactSlice from './contactapp/contactSlice';
 import textgeneratorSlice from './textGenerator/textgeneratorSlice'
 import markdownSlice from './markdownpreviewer/markdownSlice';
-
+import covidTrackerSlice from '../redux/covidapp/covidSlice'
 export const store = configureStore({
   reducer: {
     counter : counterReducer,
@@ -20,5 +20,6 @@ export const store = configureStore({
     contacts : contactSlice,
     textGenerator : textgeneratorSlice,
     markdownPreviewer : markdownSlice,
+    covidTracker : covidTrackerSlice,
   },
 });

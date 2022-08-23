@@ -1,6 +1,7 @@
 import MainAppComponent from './components/breakingbad/app';
 import Contacts from './components/contactapp/Contacts';
 import Counter from './components/Counter'
+import CovidTracker from './components/covidtrackerapp/CovidTracker';
 import TextList from './components/homework/TextList';
 import List from './components/List'
 import MarkdownPreviewer from './components/markdownpreviewer';
@@ -69,6 +70,16 @@ function App() {
       <hr/>
       <h1 style={{marginTop : '10%'}}></h1>
       <MarkdownPreviewer/>
+      <br/>
+      <hr/>
+      <hr/>
+      <br/>
+      <hr/>
+      <hr/>
+      <br/>
+      <hr/>
+      <h1 style={{marginTop : '10%'}}></h1>
+      <CovidTracker></CovidTracker>
     </div>
   );
 }

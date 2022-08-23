@@ -1,14 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchCovidThunk = createAsyncThunk("covidTracker/getCovidTracker", async (country) => {
-    const res = await fetch(`https://covid19.mathdro.id/api/${country}`)
+export const fetchCovidThunk = createAsyncThunk("covidTracker", async (country) => {
+    const res = await fetch(`https://covid19.mathdro.id/api/countries/${country}`)
     return res.json();
 })
 
 const covidTrackerSlice = createSlice({
     name : "covidTracker",
     initialState : {
-        items : [],
+        items : {},
         status : "idle",
     },
     reducers: {
@@ -19,7 +19,7 @@ const covidTrackerSlice = createSlice({
             state.status = "loading"
         },
         [fetchCovidThunk.fulfilled] : (state, action) => {
-            state.items = [...state.items, ...action.payload]
+            state.items = {...state.items, ...action.payload}
             state.status = "success"
         },
         [fetchCovidThunk.rejected] : (state, action) => {
@@ -30,3 +30,5 @@ const covidTrackerSlice = createSlice({
     }
     
 })
+
+export default covidTrackerSlice.reducer;
