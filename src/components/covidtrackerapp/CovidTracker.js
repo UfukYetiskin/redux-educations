@@ -15,13 +15,22 @@ const CovidTracker = () => {
     const [place, setPlace] = useState("");
     const [date, setDate] = useState(new Date())
 
+  
+
     useEffect(() => {
         if(status === "idle"){
             dispatch(fetchCovidThunk())
         }
-        setDate(new Date())
+
+        if(country != place ){
+            setDate(new Date())
+            dispatch(fetchCovidThunk(country))
+            setPlace(country)
+        }
         
-    }, [dispatch, status, country])
+
+        
+    }, [dispatch, country])
     const handleClick = (e) => {
         e.preventDefault();
         if(country === "")
@@ -101,7 +110,7 @@ const CovidTracker = () => {
                         <ul style={ulStyle}>
                             <li style={confirmStyle}>
                                 <h3>Infected</h3>
-                                <strong>{covidData.confirmed.value}</strong>
+                                <strong>{covidData?.confirmed?.value}</strong>
                                 <br></br>
                                 <strong>Last Updated at</strong> : {date.toLocaleDateString()}
                                 <br></br>
@@ -110,7 +119,7 @@ const CovidTracker = () => {
                             </li>
                             <li style={recorStyle}>
                                 <h3>Recovered</h3>
-                                <strong>{covidData.recovered.value}</strong>
+                                <strong>{covidData?.recovered?.value}</strong>
                                 <br></br>
                                 <strong>Last Updated at</strong> : {date.toLocaleDateString()}
                                 <br></br>
@@ -119,7 +128,7 @@ const CovidTracker = () => {
                             </li>
                             <li style={deadStyle}>
                                 <h3>Infected</h3>
-                                <strong>{covidData.deaths.value}</strong>
+                                <strong>{covidData?.deaths?.value}</strong>
                                 <br></br>
                                 <strong>Last Updated at</strong> : {date.toLocaleDateString()}
                                 <br></br>
